@@ -1,0 +1,9 @@
+import random
+
+x = "+-/*!&$#?=@abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+l = int(input("panjang password:"))
+pw = ""
+
+for i in range(l):
+    pw += random.choice(x)
+print (pw)
