@@ -1,0 +1,32 @@
+import discord
+from discord.ext import commands
+import os
+print(os.listdir('images'))
+import random 
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f'Hi! I am a bot {bot.user}!')
+
+@bot.command()
+async def fakta(ctx):
+    facts = [
+         "Sampah organik bisa diolah menjadi pupuk kompos untuk tanaman",
+         "Studi menemukan 93% air minum dalam botol di 11 merek mengandung mikroplastik. Satu penelitian di AS menemukan rata-rata 240.000 partikel per liter, didominasi nanoplastik.",
+         "Kenaikan konsentrasi CO2 berbanding lurus dengan kenaikan suhu rata-rata global; setiap peningkatan 10 ppm CO2 dapat menaikkan suhu 0,1°C. ",
+         "Menanam Pohon penting karena pohon membantu menyerap CO2 dan menyediakan oksigen.",
+        "Memanfaatkan transportasi umum dapat mengurangi emisi gas rumah kaca"
+        ]
+    fakta_random = random.choice(facts)
+    await ctx.send(fakta_random)
+
+bot.run("Token")
